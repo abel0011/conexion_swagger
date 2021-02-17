@@ -1,0 +1,707 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "API",
+    "version": "v1"
+  },
+  "servers": {
+    "url": "https://localhost:5001"
+  },
+  "paths": {
+    "/api/NeptunoAPI": {
+      "get": {
+        "tags": ["NeptunoAPI"],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Producto"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Producto"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Producto"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/NeptunoAPI/{id}": {
+      "get": {
+        "tags": ["NeptunoAPI"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Producto"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Producto"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Producto"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/NeptunoAPI/GetPedidosClienteAnio/{codcli}/{anio}": {
+      "get": {
+        "tags": ["NeptunoAPI"],
+        "parameters": [
+          {
+            "name": "codcli",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "default": "",
+              "nullable": true
+            }
+          },
+          {
+            "name": "anio",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 2020
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Pedido"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Pedido"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Pedido"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/WeatherForecast": {
+      "get": {
+        "tags": ["WeatherForecast"],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/WeatherForecast"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/WeatherForecast"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/WeatherForecast"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Categoria": {
+        "type": "object",
+        "properties": {
+          "idCategoria": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "nombreCategoria": {
+            "type": "string",
+            "nullable": true
+          },
+          "descripcion": {
+            "type": "string",
+            "nullable": true
+          },
+          "productos": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Producto"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Proveedore": {
+        "type": "object",
+        "properties": {
+          "idProveedor": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "nombreProveedor": {
+            "type": "string",
+            "nullable": true
+          },
+          "nombreContacto": {
+            "type": "string",
+            "nullable": true
+          },
+          "cargoContacto": {
+            "type": "string",
+            "nullable": true
+          },
+          "direccion": {
+            "type": "string",
+            "nullable": true
+          },
+          "ciudad": {
+            "type": "string",
+            "nullable": true
+          },
+          "region": {
+            "type": "string",
+            "nullable": true
+          },
+          "codPostal": {
+            "type": "string",
+            "nullable": true
+          },
+          "pais": {
+            "type": "string",
+            "nullable": true
+          },
+          "telefono": {
+            "type": "string",
+            "nullable": true
+          },
+          "fax": {
+            "type": "string",
+            "nullable": true
+          },
+          "paginaPrincipal": {
+            "type": "string",
+            "nullable": true
+          },
+          "productos": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Producto"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Cliente": {
+        "type": "object",
+        "properties": {
+          "idCliente": {
+            "type": "string",
+            "nullable": true
+          },
+          "nombreCliente": {
+            "type": "string",
+            "nullable": true
+          },
+          "nombreContacto": {
+            "type": "string",
+            "nullable": true
+          },
+          "cargoContacto": {
+            "type": "string",
+            "nullable": true
+          },
+          "direccion": {
+            "type": "string",
+            "nullable": true
+          },
+          "ciudad": {
+            "type": "string",
+            "nullable": true
+          },
+          "region": {
+            "type": "string",
+            "nullable": true
+          },
+          "codPostal": {
+            "type": "string",
+            "nullable": true
+          },
+          "pais": {
+            "type": "string",
+            "nullable": true
+          },
+          "telefono": {
+            "type": "string",
+            "nullable": true
+          },
+          "fax": {
+            "type": "string",
+            "nullable": true
+          },
+          "eliminado": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "pedidos": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Pedido"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Region": {
+        "type": "object",
+        "properties": {
+          "idRegion": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "descripcion": {
+            "type": "string",
+            "nullable": true
+          },
+          "territorios": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Territorio"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Territorio": {
+        "type": "object",
+        "properties": {
+          "idTerritorio": {
+            "type": "string",
+            "nullable": true
+          },
+          "descripcion": {
+            "type": "string",
+            "nullable": true
+          },
+          "idRegion": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "idRegionNavigation": {
+            "$ref": "#/components/schemas/Region"
+          },
+          "empleadosTerritorios": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/EmpleadosTerritorio"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "EmpleadosTerritorio": {
+        "type": "object",
+        "properties": {
+          "idEmpleado": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "idTerritorio": {
+            "type": "string",
+            "nullable": true
+          },
+          "idEmpleadoNavigation": {
+            "$ref": "#/components/schemas/Empleado"
+          },
+          "idTerritorioNavigation": {
+            "$ref": "#/components/schemas/Territorio"
+          }
+        },
+        "additionalProperties": false
+      },
+      "Empleado": {
+        "type": "object",
+        "properties": {
+          "idEmpleado": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "apellidos": {
+            "type": "string",
+            "nullable": true
+          },
+          "nombres": {
+            "type": "string",
+            "nullable": true
+          },
+          "cargo": {
+            "type": "string",
+            "nullable": true
+          },
+          "tratamiento": {
+            "type": "string",
+            "nullable": true
+          },
+          "fechaNacimiento": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "fechaContratacion": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "direccion": {
+            "type": "string",
+            "nullable": true
+          },
+          "ciudad": {
+            "type": "string",
+            "nullable": true
+          },
+          "region": {
+            "type": "string",
+            "nullable": true
+          },
+          "codPostal": {
+            "type": "string",
+            "nullable": true
+          },
+          "pais": {
+            "type": "string",
+            "nullable": true
+          },
+          "telDomicilio": {
+            "type": "string",
+            "nullable": true
+          },
+          "extension": {
+            "type": "string",
+            "nullable": true
+          },
+          "notas": {
+            "type": "string",
+            "nullable": true
+          },
+          "jefe": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "empleadosTerritorios": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/EmpleadosTerritorio"
+            },
+            "nullable": true
+          },
+          "pedidos": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Pedido"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Pedido": {
+        "type": "object",
+        "properties": {
+          "idPedido": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "idCliente": {
+            "type": "string",
+            "nullable": true
+          },
+          "idEmpleado": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "fechaPedido": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "fechaEntrega": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "fechaEnvio": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "formaEnvio": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "cargo": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "destinatario": {
+            "type": "string",
+            "nullable": true
+          },
+          "direccionDestinatario": {
+            "type": "string",
+            "nullable": true
+          },
+          "ciudadDestinatario": {
+            "type": "string",
+            "nullable": true
+          },
+          "regionDestinatario": {
+            "type": "string",
+            "nullable": true
+          },
+          "codPostalDestinatario": {
+            "type": "string",
+            "nullable": true
+          },
+          "paisDestinatario": {
+            "type": "string",
+            "nullable": true
+          },
+          "eliminado": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "idClienteNavigation": {
+            "$ref": "#/components/schemas/Cliente"
+          },
+          "idEmpleadoNavigation": {
+            "$ref": "#/components/schemas/Empleado"
+          },
+          "detallesPedidos": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DetallesPedido"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "DetallesPedido": {
+        "type": "object",
+        "properties": {
+          "idPedido": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "idProducto": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "precioUnidad": {
+            "type": "number",
+            "format": "double"
+          },
+          "cantidad": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "descuento": {
+            "type": "number",
+            "format": "double"
+          },
+          "eliminado": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "idPedidoNavigation": {
+            "$ref": "#/components/schemas/Pedido"
+          },
+          "idProductoNavigation": {
+            "$ref": "#/components/schemas/Producto"
+          }
+        },
+        "additionalProperties": false
+      },
+      "Producto": {
+        "type": "object",
+        "properties": {
+          "idProducto": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "nombreProducto": {
+            "type": "string",
+            "nullable": true
+          },
+          "idProveedor": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "idCategoria": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "cantidadPorUnidad": {
+            "type": "string",
+            "nullable": true
+          },
+          "precioUnidad": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "unidadesEnExistencia": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "unidadesEnPedido": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "nivelNuevoPedido": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "suspendido": {
+            "type": "boolean"
+          },
+          "idCategoriaNavigation": {
+            "$ref": "#/components/schemas/Categoria"
+          },
+          "idProveedorNavigation": {
+            "$ref": "#/components/schemas/Proveedore"
+          },
+          "detallesPedidos": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DetallesPedido"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "WeatherForecast": {
+        "type": "object",
+        "properties": {
+          "date": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "temperatureC": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "temperatureF": {
+            "type": "integer",
+            "format": "int32",
+            "readOnly": true
+          },
+          "summary": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  }
+}
